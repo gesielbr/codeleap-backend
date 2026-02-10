@@ -134,4 +134,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Adicione isso logo abaixo de STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Isso garante que o WhiteNoise saiba onde buscar os arquivos
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 CORS_ALLOW_ALL_ORIGINS = True
