@@ -1,8 +1,12 @@
-from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from django.contrib import admin
+from django.urls import path, include # <-- ESTA LINHA É A QUE FALTA!
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
-    # ... suas rotas ...
+    path('admin/', admin.site.urls),
+    path('', include('posts.urls')), # Suas rotas do app de posts
+    
+    # Swagger / OpenAPI
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    # UI do Swagger:
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
