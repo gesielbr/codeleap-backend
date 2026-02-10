@@ -43,10 +43,22 @@ INSTALLED_APPS = [
     # Bibliotecas que instalamos
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
     
     # Nosso app
     'posts',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'CodeLeap Network API',
+    'DESCRIPTION': 'Full CRUD for CodeLeap technical test.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
